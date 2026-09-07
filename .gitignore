@@ -1,0 +1,27 @@
+# Local secrets and environment configuration
+.env
+.env.*
+!.env.example
+
+# JavaScript dependencies and logs
+node_modules/
+npm-debug.log*
+
+# Compiled C++ binaries and build folders
+*.exe
+*.obj
+*.o
+*.pdb
+build/
+cmake-build-*/
+CMakeFiles/
+CMakeCache.txt
+
+# Generated application output
+backend/output/
+
+# Editor and OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

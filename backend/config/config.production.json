@@ -1,0 +1,9 @@
+{
+  "repositoryBackend": "csv",
+  "postgresHost": "postgres",
+  "postgresPort": 5432,
+  "postgresDatabase": "smart_inventory",
+  "postgresUsername": "postgres",
+  "postgresPassword": "postgres",
+  "jsonIndent": 0
+}

@@ -1,0 +1,55 @@
+<svg width="1200" height="675" viewBox="0 0 1200 675" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Warehouse Intelligence Platform system architecture</title>
+  <desc id="desc">Architecture diagram showing WMS integrations feeding a C++ intelligence core, REST API, web workspace, Prometheus, Grafana, and Docker infrastructure.</desc>
+  <rect width="1200" height="675" fill="#F7FAFC"/>
+  <rect x="48" y="44" width="1104" height="587" rx="18" fill="#FFFFFF" stroke="#D7DEE8"/>
+  <text x="78" y="91" fill="#16202A" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="700">Warehouse Intelligence Platform Architecture</text>
+  <text x="78" y="124" fill="#637083" font-family="Segoe UI, Arial, sans-serif" font-size="16">Intelligence layer integrating warehouse systems, analytics, APIs, and observability</text>
+
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L8,3 z" fill="#3A6EA5"/>
+    </marker>
+  </defs>
+
+  <rect x="78" y="178" width="184" height="92" rx="12" fill="#E8F1F8" stroke="#AFC7DD"/>
+  <text x="102" y="215" fill="#16202A" font-family="Segoe UI, Arial, sans-serif" font-size="17" font-weight="700">WMS / ERP / OMS</text>
+  <text x="102" y="242" fill="#4F5F73" font-family="Segoe UI, Arial, sans-serif" font-size="14">Operational signals</text>
+
+  <rect x="78" y="346" width="184" height="92" rx="12" fill="#EAF7EF" stroke="#AED7BC"/>
+  <text x="102" y="383" fill="#16202A" font-family="Segoe UI, Arial, sans-serif" font-size="17" font-weight="700">Audit Feeds</text>
+  <text x="102" y="410" fill="#4F5F73" font-family="Segoe UI, Arial, sans-serif" font-size="14">Counts, location drift</text>
+
+  <rect x="332" y="262" width="184" height="92" rx="12" fill="#FFF6E8" stroke="#E1C089"/>
+  <text x="359" y="298" fill="#16202A" font-family="Segoe UI, Arial, sans-serif" font-size="17" font-weight="700">Data Repository</text>
+  <text x="359" y="325" fill="#4F5F73" font-family="Segoe UI, Arial, sans-serif" font-size="14">CSV or PostgreSQL</text>
+
+  <rect x="586" y="234" width="214" height="148" rx="14" fill="#EEF0FF" stroke="#BFC4E8"/>
+  <text x="623" y="270" fill="#16202A" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="700">C++ Intelligence Core</text>
+  <text x="619" y="302" fill="#4F5F73" font-family="Segoe UI, Arial, sans-serif" font-size="14">Optimization engine</text>
+  <text x="619" y="326" fill="#4F5F73" font-family="Segoe UI, Arial, sans-serif" font-size="14">Decision engine</text>
+  <text x="619" y="350" fill="#4F5F73" font-family="Segoe UI, Arial, sans-serif" font-size="14">AI-ready insights</text>
+
+  <rect x="864" y="178" width="220" height="92" rx="12" fill="#E8F1F8" stroke="#AFC7DD"/>
+  <text x="902" y="215" fill="#16202A" font-family="Segoe UI, Arial, sans-serif" font-size="17" font-weight="700">Node.js REST API</text>
+  <text x="902" y="242" fill="#4F5F73" font-family="Segoe UI, Arial, sans-serif" font-size="14">Dashboards and integrations</text>
+
+  <rect x="864" y="346" width="220" height="92" rx="12" fill="#F1FAF6" stroke="#AED7BC"/>
+  <text x="913" y="383" fill="#16202A" font-family="Segoe UI, Arial, sans-serif" font-size="17" font-weight="700">Observability</text>
+  <text x="904" y="410" fill="#4F5F73" font-family="Segoe UI, Arial, sans-serif" font-size="14">Prometheus and Grafana</text>
+
+  <rect x="864" y="500" width="220" height="78" rx="12" fill="#FFF0ED" stroke="#E3B5A9"/>
+  <text x="908" y="532" fill="#16202A" font-family="Segoe UI, Arial, sans-serif" font-size="17" font-weight="700">Web Workspace</text>
+  <text x="901" y="557" fill="#4F5F73" font-family="Segoe UI, Arial, sans-serif" font-size="14">Executive and ops views</text>
+
+  <path d="M262 224 H332" stroke="#3A6EA5" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M262 392 C296 392 298 308 332 308" stroke="#3A6EA5" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M516 308 H586" stroke="#3A6EA5" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M800 278 C828 260 836 224 864 224" stroke="#3A6EA5" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M800 337 C831 352 835 392 864 392" stroke="#3A6EA5" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M974 270 V346" stroke="#3A6EA5" stroke-width="3" marker-end="url(#arrow)"/>
+  <path d="M974 270 V500" stroke="#3A6EA5" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <rect x="78" y="535" width="722" height="43" rx="10" fill="#F2F5F8" stroke="#D7DEE8"/>
+  <text x="104" y="562" fill="#4F5F73" font-family="Segoe UI, Arial, sans-serif" font-size="14">Docker Compose packages PostgreSQL, backend, frontend, Nginx, Prometheus, and Grafana for deployment.</text>
+</svg>

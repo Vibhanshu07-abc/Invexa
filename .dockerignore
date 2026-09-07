@@ -1,0 +1,13 @@
+.git
+.agents
+.codex
+.vscode
+backend/build
+backend/SmartInventory
+backend/SmartInventory.exe
+backend/SmartInventoryTests
+backend/SmartInventoryTests.exe
+backend/output
+frontend/node_modules
+**/*.log
+**/.DS_Store

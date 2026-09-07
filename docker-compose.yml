@@ -1,0 +1,135 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-smart_inventory}
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ./deploy/postgres/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-postgres} -d ${POSTGRES_DB:-smart_inventory}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  backend:
+    build:
+      context: .
+      target: backend-runtime
+    environment:
+      SMARTINVENTORY_SERVICE_MODE: "true"
+      SMARTINVENTORY_STARTUP_MODE: ${SMARTINVENTORY_STARTUP_MODE:-demo}
+      SMARTINVENTORY_SERVICE_REFRESH_SECONDS: ${SMARTINVENTORY_SERVICE_REFRESH_SECONDS:-30}
+      SMARTINVENTORY_CONFIG_PATH: /app/backend/config/config.production.json
+      SMARTINVENTORY_INVENTORY_CSV_PATH: /app/data/inventory.csv
+      SMARTINVENTORY_OUTPUT_JSON_PATH: /app/shared/output/result.json
+      SMARTINVENTORY_MONITORING_PATH: /app/shared/output/monitoring.json
+      SMARTINVENTORY_REPOSITORY_BACKEND: ${SMARTINVENTORY_REPOSITORY_BACKEND:-csv}
+      SMARTINVENTORY_POSTGRES_HOST: postgres
+      SMARTINVENTORY_POSTGRES_PORT: 5432
+      SMARTINVENTORY_POSTGRES_DATABASE: ${POSTGRES_DB:-smart_inventory}
+      SMARTINVENTORY_POSTGRES_USERNAME: ${POSTGRES_USER:-postgres}
+      SMARTINVENTORY_POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      SMARTINVENTORY_LOG_LEVEL: ${SMARTINVENTORY_LOG_LEVEL:-info}
+      SMARTINVENTORY_LOG_FILE_PATH: /app/backend/logs/backend.log
+    volumes:
+      - shared-data:/app/shared/output
+    depends_on:
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "test -f /app/shared/output/result.json"]
+      interval: 10s
+      timeout: 5s
+      retries: 6
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: .
+      target: frontend-runtime
+    environment:
+      NODE_ENV: production
+      PORT: 8080
+      SMARTINVENTORY_CONFIG_PATH: /app/backend-config/config.production.json
+      SMARTINVENTORY_RESULT_PATH: /app/shared/output/result.json
+      SMARTINVENTORY_MONITORING_PATH: /app/shared/output/monitoring.json
+      SMARTINVENTORY_REPOSITORY_BACKEND: ${SMARTINVENTORY_REPOSITORY_BACKEND:-csv}
+      SMARTINVENTORY_POSTGRES_HOST: postgres
+      SMARTINVENTORY_POSTGRES_PORT: 5432
+      SMARTINVENTORY_ADMIN_PASSWORD_HASH: ${SMARTINVENTORY_ADMIN_PASSWORD_HASH:-}
+      SMARTINVENTORY_WAREHOUSE_MANAGER_PASSWORD_HASH: ${SMARTINVENTORY_WAREHOUSE_MANAGER_PASSWORD_HASH:-}
+      SMARTINVENTORY_ANALYST_PASSWORD_HASH: ${SMARTINVENTORY_ANALYST_PASSWORD_HASH:-}
+      SMARTINVENTORY_VIEWER_PASSWORD_HASH: ${SMARTINVENTORY_VIEWER_PASSWORD_HASH:-}
+      SMARTINVENTORY_VERSION: ${SMARTINVENTORY_VERSION:-local}
+    volumes:
+      - shared-data:/app/shared/output:ro
+    depends_on:
+      backend:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://127.0.0.1:8080/health >/dev/null 2>&1 || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  nginx:
+    image: nginx:1.27-alpine
+    ports:
+      - "${NGINX_PORT:-80}:80"
+    volumes:
+      - ./deploy/nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+    depends_on:
+      frontend:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://127.0.0.1/health >/dev/null 2>&1 || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+  prometheus:
+    image: prom/prometheus:v2.54.1
+    command:
+      - --config.file=/etc/prometheus/prometheus.yml
+      - --storage.tsdb.path=/prometheus
+      - --web.enable-lifecycle
+    ports:
+      - "${PROMETHEUS_PORT:-9090}:9090"
+    volumes:
+      - ./deploy/monitoring/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - ./deploy/monitoring/prometheus/alerts.yml:/etc/prometheus/alerts.yml:ro
+      - prometheus-data:/prometheus
+    depends_on:
+      frontend:
+        condition: service_healthy
+    restart: unless-stopped
+
+  grafana:
+    image: grafana/grafana:11.1.4
+    environment:
+      GF_SECURITY_ADMIN_USER: ${GRAFANA_ADMIN_USER:-admin}
+      GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_ADMIN_PASSWORD:-admin}
+      GF_USERS_ALLOW_SIGN_UP: "false"
+      GF_SERVER_ROOT_URL: ${GRAFANA_ROOT_URL:-http://localhost:3000}
+    ports:
+      - "${GRAFANA_PORT:-3000}:3000"
+    volumes:
+      - ./deploy/monitoring/grafana/provisioning:/etc/grafana/provisioning:ro
+      - ./deploy/monitoring/grafana/dashboards:/var/lib/grafana/dashboards:ro
+      - grafana-data:/var/lib/grafana
+    depends_on:
+      prometheus:
+        condition: service_started
+    restart: unless-stopped
+
+volumes:
+  postgres-data:
+  shared-data:
+  prometheus-data:
+  grafana-data:

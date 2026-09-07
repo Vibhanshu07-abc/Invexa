@@ -1,0 +1,18 @@
+services:
+  backend:
+    environment:
+      SMARTINVENTORY_CONFIG_PATH: /app/backend/config/config.development.json
+      SMARTINVENTORY_OUTPUT_JSON_PATH: /app/shared/output/result.json
+      SMARTINVENTORY_MONITORING_PATH: /app/shared/output/monitoring.json
+      SMARTINVENTORY_SERVICE_REFRESH_SECONDS: ${SMARTINVENTORY_SERVICE_REFRESH_SECONDS:-10}
+      SMARTINVENTORY_LOG_LEVEL: debug
+
+  frontend:
+    environment:
+      NODE_ENV: development
+      SMARTINVENTORY_CONFIG_PATH: /app/backend-config/config.development.json
+      SMARTINVENTORY_MONITORING_PATH: /app/shared/output/monitoring.json
+
+  nginx:
+    ports:
+      - "${NGINX_PORT:-8088}:80"

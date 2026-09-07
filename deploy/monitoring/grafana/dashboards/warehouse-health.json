@@ -1,0 +1,53 @@
+{
+  "annotations": { "list": [] },
+  "editable": false,
+  "graphTooltip": 0,
+  "panels": [
+    {
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "fieldConfig": { "defaults": { "unit": "percent" }, "overrides": [] },
+      "gridPos": { "h": 9, "w": 12, "x": 0, "y": 0 },
+      "id": 1,
+      "targets": [{ "expr": "smartinventory_warehouse_health_score", "legendFormat": "{{warehouse_name}}", "refId": "A" }],
+      "title": "Warehouse Health Score",
+      "type": "timeseries"
+    },
+    {
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "fieldConfig": { "defaults": { "unit": "percent" }, "overrides": [] },
+      "gridPos": { "h": 9, "w": 12, "x": 12, "y": 0 },
+      "id": 2,
+      "targets": [
+        { "expr": "smartinventory_warehouse_inventory_accuracy_percent", "legendFormat": "{{warehouse_name}} accuracy", "refId": "A" },
+        { "expr": "smartinventory_warehouse_capacity_utilization_percent", "legendFormat": "{{warehouse_name}} utilization", "refId": "B" }
+      ],
+      "title": "Accuracy and Utilization",
+      "type": "timeseries"
+    },
+    {
+      "datasource": { "type": "prometheus", "uid": "prometheus" },
+      "gridPos": { "h": 8, "w": 24, "x": 0, "y": 9 },
+      "id": 3,
+      "targets": [{ "expr": "smartinventory_warehouse_average_risk", "format": "table", "instant": true, "legendFormat": "{{warehouse_name}}", "refId": "A" }],
+      "title": "Warehouse Risk Snapshot",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": { "Time": true },
+            "renameByName": { "Value": "Average Risk" }
+          }
+        }
+      ],
+      "type": "table"
+    }
+  ],
+  "schemaVersion": 39,
+  "style": "dark",
+  "tags": ["smartinventory", "warehouse"],
+  "templating": { "list": [] },
+  "time": { "from": "now-12h", "to": "now" },
+  "title": "Warehouse Health",
+  "uid": "smart-warehouse",
+  "version": 1
+}

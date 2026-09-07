@@ -1,0 +1,52 @@
+groups:
+  - name: smartinventory-platform-alerts
+    rules:
+      - alert: DatabaseUnavailable
+        expr: smartinventory_database_available{backend="postgresql"} == 0
+        for: 2m
+        labels:
+          severity: critical
+          service: smartinventory
+        annotations:
+          summary: SmartInventory database is unavailable
+          description: PostgreSQL connectivity has been unavailable for more than 2 minutes.
+
+      - alert: HighApiLatency
+        expr: rate(smartinventory_http_request_duration_seconds_sum{route=~"/api/.*"}[5m]) / clamp_min(rate(smartinventory_http_request_duration_seconds_count{route=~"/api/.*"}[5m]), 0.001) > 1
+        for: 5m
+        labels:
+          severity: warning
+          service: smartinventory
+        annotations:
+          summary: SmartInventory API latency is elevated
+          description: Average API latency has stayed above 1 second for 5 minutes.
+
+      - alert: ForecastFailures
+        expr: increase(smartinventory_forecast_failures_total[10m]) > 0
+        for: 0m
+        labels:
+          severity: critical
+          service: smartinventory
+        annotations:
+          summary: Forecast generation failures detected
+          description: Forecast generation recorded at least one failure in the last 10 minutes.
+
+      - alert: DecisionEngineFailures
+        expr: increase(smartinventory_decision_engine_failures_total[10m]) > 0
+        for: 0m
+        labels:
+          severity: critical
+          service: smartinventory
+        annotations:
+          summary: Decision engine failures detected
+          description: The decision engine recorded at least one failure in the last 10 minutes.
+
+      - alert: HealthEndpointFailures
+        expr: up{job="smartinventory-frontend"} == 0 or smartinventory_health_endpoint_state{endpoint="ready"} == 0
+        for: 2m
+        labels:
+          severity: critical
+          service: smartinventory
+        annotations:
+          summary: SmartInventory health checks are failing
+          description: Prometheus cannot scrape the service or the readiness endpoint is reporting unhealthy status.

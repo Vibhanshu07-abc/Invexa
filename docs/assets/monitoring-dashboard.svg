@@ -1,0 +1,39 @@
+<svg width="1200" height="675" viewBox="0 0 1200 675" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Monitoring dashboard preview</title>
+  <desc id="desc">A stylized Grafana monitoring dashboard showing API latency, database availability, forecast health, and system readiness.</desc>
+  <rect width="1200" height="675" fill="#F4F6F8"/>
+  <rect x="54" y="48" width="1092" height="579" rx="18" fill="#FFFFFF" stroke="#D8E0EA"/>
+  <text x="92" y="101" fill="#17212B" font-family="Segoe UI, Arial, sans-serif" font-size="28" font-weight="700">System Health and Monitoring</text>
+  <text x="92" y="132" fill="#667386" font-family="Segoe UI, Arial, sans-serif" font-size="15">Prometheus metrics visualized through provisioned Grafana dashboards</text>
+
+  <rect x="92" y="180" width="236" height="110" rx="12" fill="#EDF7F2" stroke="#C8DDD4"/>
+  <text x="118" y="217" fill="#526270" font-family="Segoe UI, Arial, sans-serif" font-size="13">Readiness</text>
+  <text x="118" y="257" fill="#17212B" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="700">Ready</text>
+
+  <rect x="356" y="180" width="236" height="110" rx="12" fill="#EEF3FF" stroke="#D1DAF3"/>
+  <text x="382" y="217" fill="#526270" font-family="Segoe UI, Arial, sans-serif" font-size="13">API Latency</text>
+  <text x="382" y="257" fill="#17212B" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="700">128 ms</text>
+
+  <rect x="620" y="180" width="236" height="110" rx="12" fill="#FFF7EA" stroke="#E9D4A9"/>
+  <text x="646" y="217" fill="#526270" font-family="Segoe UI, Arial, sans-serif" font-size="13">Forecast Runtime</text>
+  <text x="646" y="257" fill="#17212B" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="700">0.42 s</text>
+
+  <rect x="884" y="180" width="210" height="110" rx="12" fill="#FCEFED" stroke="#E9BDB6"/>
+  <text x="910" y="217" fill="#526270" font-family="Segoe UI, Arial, sans-serif" font-size="13">Alert Rules</text>
+  <text x="910" y="257" fill="#17212B" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="700">5</text>
+
+  <rect x="92" y="334" width="482" height="220" rx="12" fill="#FFFFFF" stroke="#D8E0EA"/>
+  <text x="120" y="370" fill="#17212B" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="700">API Request Latency</text>
+  <polyline points="126,506 190,492 254,514 318,452 382,464 446,421 526,438" fill="none" stroke="#2E6F95" stroke-width="5" stroke-linecap="round"/>
+  <polyline points="126,526 190,518 254,520 318,505 382,498 446,486 526,482" fill="none" stroke="#8A6BBE" stroke-width="4" stroke-linecap="round"/>
+  <line x1="126" y1="530" x2="526" y2="530" stroke="#D8E0EA"/>
+
+  <rect x="612" y="334" width="482" height="220" rx="12" fill="#FFFFFF" stroke="#D8E0EA"/>
+  <text x="640" y="370" fill="#17212B" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="700">Platform Health Signals</text>
+  <rect x="640" y="414" width="350" height="18" rx="9" fill="#2E6F95"/>
+  <rect x="640" y="464" width="282" height="18" rx="9" fill="#D99559"/>
+  <rect x="640" y="514" width="410" height="18" rx="9" fill="#3A6EA5"/>
+  <text x="640" y="404" fill="#667386" font-family="Segoe UI, Arial, sans-serif" font-size="13">Database availability</text>
+  <text x="640" y="454" fill="#667386" font-family="Segoe UI, Arial, sans-serif" font-size="13">Decision engine performance</text>
+  <text x="640" y="504" fill="#667386" font-family="Segoe UI, Arial, sans-serif" font-size="13">Warehouse health coverage</text>
+</svg>

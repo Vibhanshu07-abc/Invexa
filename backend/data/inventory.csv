@@ -1,0 +1,31 @@
+id,name,category,expected,actual,price,demand,expected_location,current_location,restock_cost,frequency,warehouse_id,warehouse_name
+1,Wireless Barcode Scanner,Electronics,180,164,89.50,76,Aisle-A03-Bin-12,Aisle-A03-Bin-12,1432,3,1,Bengaluru Fulfillment Center
+2,USB-C Charging Cable,Electronics,1250,1198,6.75,94,Aisle-A08-Bin-04,Aisle-A08-Bin-04,351,2,1,Bengaluru Fulfillment Center
+3,Organic Basmati Rice 5kg,Groceries,640,602,18.40,88,Zone-F02-Rack-07,Zone-F02-Rack-07,787,4,2,Mumbai Distribution Hub
+4,Cold Brew Coffee 1L,Groceries,420,391,12.90,73,Zone-F05-Rack-02,Zone-F06-Rack-02,418,5,2,Mumbai Distribution Hub
+5,Nitrile Examination Gloves,Medical,900,846,14.20,91,Med-A01-Shelf-09,Med-A01-Shelf-09,849,6,3,Delhi North Warehouse
+6,Digital Blood Pressure Monitor,Medical,210,198,58.00,64,Med-B04-Shelf-03,Med-B04-Shelf-03,760,2,3,Delhi North Warehouse
+7,LED Desk Lamp,Electronics,360,331,32.50,69,Zone-C03-Bin-08,Zone-C03-Bin-08,1054,3,4,Hyderabad Operations Center
+8,Ergonomic Office Chair,Furniture,145,132,185.00,48,Zone-L02-Rack-01,Zone-L03-Rack-01,2453,4,4,Hyderabad Operations Center
+9,Stainless Steel Water Bottle,Home and Kitchen,780,755,21.80,82,Zone-H04-Bin-16,Zone-H04-Bin-16,627,2,5,Chennai Coastal Hub
+10,Cotton Bath Towel Set,Home and Kitchen,520,489,27.40,57,Zone-H08-Bin-05,Zone-H08-Bin-05,906,3,5,Chennai Coastal Hub
+11,Men Running Shoes Footwear,Apparel,310,284,74.00,86,Zone-A06-Rack-10,Zone-A06-Rack-10,2012,5,6,Pune Logistics Center
+12,Women Linen Shirt Apparel,Apparel,460,433,39.90,71,Zone-A09-Rack-06,Zone-A10-Rack-06,1222,2,6,Pune Logistics Center
+13,Industrial Safety Helmet,Hardware,275,251,46.50,62,Zone-I01-Shelf-12,Zone-I01-Shelf-12,1218,4,7,Ahmedabad Industrial Depot
+14,Cordless Drill Kit,Hardware,185,171,129.00,54,Zone-I04-Shelf-02,Zone-I04-Shelf-02,1861,3,7,Ahmedabad Industrial Depot
+15,Infant Formula Stage 2,Groceries,530,476,31.20,95,Zone-F09-Rack-11,Zone-F09-Rack-11,1870,7,8,Kolkata East Warehouse
+16,Diapers Large Pack,Home and Kitchen,740,701,22.60,89,Zone-H11-Bin-04,Zone-H11-Bin-04,1014,4,8,Kolkata East Warehouse
+17,Air Purifier HEPA,Electronics,160,143,248.00,58,Zone-E02-Rack-03,Zone-E03-Rack-03,4274,5,9,Jaipur Regional Center
+18,Ceiling Fan 1200mm,Home and Kitchen,260,247,94.50,51,Zone-H14-Rack-02,Zone-H14-Rack-02,1335,2,9,Jaipur Regional Center
+19,HDPE Shipping Carton,Packaging,2200,2115,1.85,78,Pack-A02-Bin-01,Pack-A02-Bin-01,391,3,10,Lucknow Fulfillment Hub
+20,Bubble Wrap Roll 100m,Packaging,680,641,16.80,67,Pack-B05-Bin-03,Pack-B05-Bin-03,722,4,10,Lucknow Fulfillment Hub
+21,Premium Dog Food 10kg,Pet Supplies,390,352,54.90,84,Zone-P01-Rack-05,Zone-P01-Rack-05,2171,5,11,Kochi Gateway Warehouse
+22,Cat Litter 10L,Pet Supplies,510,482,19.40,72,Zone-P04-Rack-04,Zone-P05-Rack-04,763,3,11,Kochi Gateway Warehouse
+23,Smartphone Screen Protector,Electronics,1100,1026,4.90,93,Zone-E08-Bin-17,Zone-E08-Bin-17,642,6,12,Noida Technology Depot
+24,Mechanical Keyboard,Electronics,295,271,96.00,75,Zone-E11-Bin-06,Zone-E11-Bin-06,2304,4,12,Noida Technology Depot
+25,Engine Oil 5W30 4L,Automotive,430,397,42.50,66,Auto-A03-Rack-09,Auto-A03-Rack-09,1469,4,13,Nagpur Central Warehouse
+26,Car Battery 60Ah,Automotive,120,112,112.00,43,Auto-B01-Rack-02,Auto-B01-Rack-02,939,2,13,Nagpur Central Warehouse
+27,Classroom Notebook Pack,Stationery,1500,1423,8.60,87,Zone-S02-Bin-13,Zone-S02-Bin-13,922,3,14,Coimbatore South Warehouse
+28,Whiteboard Marker Set,Stationery,680,638,14.30,68,Zone-S05-Bin-08,Zone-S06-Bin-08,669,3,14,Coimbatore South Warehouse
+29,Refrigerated Vaccine Carrier,Medical,75,69,340.00,59,Cold-A01-Rack-01,Cold-A01-Rack-01,2109,2,15,Indore Central Warehouse
+30,Temperature Data Logger,Medical,240,225,68.00,77,Cold-A04-Bin-02,Cold-A04-Bin-02,1097,4,15,Indore Central Warehouse
