@@ -1,4 +1,4 @@
-# Warehouse Intelligence Platform
+# Invexa — Warehouse Intelligence Platform
 
 An operational intelligence layer for modern warehouse networks. The platform integrates with Warehouse Management Systems, analyzes operational signals, and turns raw warehouse data into decision-ready insights for leaders, analysts, and operations teams.
 
