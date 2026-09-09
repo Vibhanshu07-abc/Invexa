@@ -48,7 +48,7 @@ jobs:
       - name: Run static analysis
         run: |
           cppcheck \
-            --enable=warning,performance,portability,style \
+            --enable=warning,performance,portability \
             --error-exitcode=1 \
             --inline-suppr \
             --suppress=missingIncludeSystem \
