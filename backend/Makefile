@@ -118,7 +118,7 @@ unit-test: $(TEST_TARGET)
 test: unit-test
 
 coverage: clean
-	$(MAKE) COVERAGE=1 unit-test
+	$(MAKE) COVERAGE=1 all unit-test
 	$(MKDIR_COV)
 	gcovr --root . --exclude "$(TEST_DIR)" --xml "$(COVERAGE_DIR)/coverage.xml" --html-details "$(COVERAGE_DIR)/index.html" --print-summary
 
