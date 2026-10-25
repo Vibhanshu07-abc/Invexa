@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: invexa
+    runtime: docker
+    plan: free
+    healthCheckPath: /health
+    envVars:
+      - key: PORT
+        value: "10000"
+      - key: NODE_ENV
+        value: production
+      - key: SMARTINVENTORY_REPOSITORY_BACKEND
+        value: csv
+      - key: SMARTINVENTORY_STARTUP_MODE
+        value: demo
+      - key: SMARTINVENTORY_SERVICE_REFRESH_SECONDS
+        value: "30"
+      - key: SMARTINVENTORY_VERSION
+        value: live

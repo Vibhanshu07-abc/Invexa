@@ -827,7 +827,7 @@ function createServer(config) {
 const config = normalizeConfig(readJson(CONFIG_PATH, {}));
 const server = createServer(config);
 
-server.listen(PORT, () => {
+server.listen(PORT, "0.0.0.0", () => {
   log("info", "frontend_server_started", {
     port: PORT,
     configPath: CONFIG_PATH,
