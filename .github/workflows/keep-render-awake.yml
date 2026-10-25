@@ -17,4 +17,4 @@ jobs:
     timeout-minutes: 2
     steps:
       - name: Request the public health endpoint
-        run: curl --fail --silent --show-error --location --retry 2 --max-time 30 https://invexa.onrender.com/health
+        run: curl --fail --silent --show-error --location --retry 2 --max-time 30 https://invexa-nqq9.onrender.com/health
